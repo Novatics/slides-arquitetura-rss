@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Workshop de testes RSS: Cucumber e Protractor</title>
+		<title>Workshop de testes RSS: Cucumber, Protractor e Chai</title>
 
 		<meta name="description" content="A step-by-step presentaion on Protractor End-to-End Testing for AngularJS">
 		<meta name="author" content="Ramon Victor | @ramonvictor">
@@ -70,30 +70,30 @@
 				<section>
 					<h2 class="slide-header">Quais os principais tipos de testes?</h2>
 					<ul>
-						<li>Teste unitário</li>
-						<li>Teste de integração</li>
-						<li>Teste fim-a-fim (E2E)</li>
-						<li>Teste de Aceitação</li>
+						<li class="fragment">Teste unitário</li>
+						<li class="fragment">Teste de integração</li>
+						<li class="fragment">Teste fim-a-fim (E2E)</li>
+						<li class="fragment">Teste de Aceitação</li>
 					</ul>
 				</section>
 
 				<section>
 					<h2 class="slide-header">Qual a ideia por trás de testes E2E?</h2>
 					<ul>
-						<li>Como os usuários vão ver minha aplicação?</li>
-						<li>O backend está se comunicando com o frontend?</li>
-						<li>Posso subir o código para produção?</li>
-						<li><strong>NÃO</strong> substitui testes unitários!</li>
+						<li class="fragment">Como os usuários vão ver minha aplicação?</li>
+						<li class="fragment">O backend está se comunicando com o frontend?</li>
+						<li class="fragment">Posso subir o código para produção?</li>
+						<li class="fragment"><strong>NÃO</strong> substitui testes unitários!</li>
 					</ul>
 				</section>
 
 				<section>
 					<h2 class="slide-header">Pontos fracos dos testes E2E</h2>
 					<ul>
-						<li>Precisamos de um ambiente específico para rodar os testes</li>
-						<li>Nem sempre é fácil escrever</li>
-						<li>É mais difícil de debugar</li>
-						<li>É difícil manter os testes sempre atualizados</li>
+						<li class="fragment">Precisamos de um ambiente específico para rodar os testes</li>
+						<li class="fragment">Nem sempre é fácil escrever</li>
+						<li class="fragment">É mais difícil de debugar</li>
+						<li class="fragment">É difícil manter os testes sempre atualizados</li>
 					</ul>
 				</section>
 
@@ -108,8 +108,9 @@
 					<h2 class="slide-header">Onde entra o BDD?</h2>
 					<h3 class="subtitle">Behavior Driven Development</h3>
 					<ul>
-						<li>Surgiu como uma resposta ao TDD</li>
-						<li>Envolve os <strong>analistas de negócio</strong></li>
+						<li class="fragment">Surgiu como uma resposta ao TDD</li>
+						<li class="fragment">Foca no comportamento esperado do sistema</li>
+						<li class="fragment">Envolve mais os <strong>analistas de negócio</strong></li>
 					</ul>
 				</section>
 
@@ -127,19 +128,20 @@
 				</section>
 
 				<section>
-					<h2 class="slide-header">Quais foram nossas decisões até agora?</h2>
+					<h2 class="slide-header">Dificuldades com nossas camadas</h2>
 					<ul>
-						<li>Testar apenas E2E</li>
-						<li>Usar o BDD como estratégia de desenvolvimento</li>
-						<li>Fazer teste E2E pelo AngularJS</li>
+						<li class="fragment">Dificuldade de ter um <strong>banco de dados isolado</strong> para rodar os testes</li>
+						<li class="fragment">Dificuldade de integração dos <strong>testes pelo Maven</strong> com tecnologias frontend</li>
+						<li class="fragment">Dificuldade de integrar testes com o <strong>COBOL</strong></li>
 					</ul>
 				</section>
 
 				<section>
-					<h2 class="slide-header">Dificuldades com nossas camadas</h2>
+					<h2 class="slide-header">Quais foram nossas decisões até agora?</h2>
 					<ul>
-						<li>Dificuldade de ter um <strong>banco de dados isolado</strong> para rodar os testes</li>
-						<li>Integração dos testes com Maven com tecnologias frontend</li>
+						<li class="fragment">Testar apenas E2E</li>
+						<li class="fragment">Usar o BDD como estratégia de desenvolvimento</li>
+						<li class="fragment">Fazer teste E2E pelo AngularJS</li>
 					</ul>
 				</section>
 
@@ -150,6 +152,9 @@
 					</div>
 					<div style="float:left; width: 48%; margin-top: 20px;">
 						<img src="img/protractor-logo.png">
+					</div>
+					<div style="clear: both; text-align: center;">
+						<img src="img/chai-logo.png">
 					</div>
 				</section>
 
@@ -164,7 +169,32 @@
 				</section>
 
 				<section>
-					<h2 class="slide-header">Exemplo de uso do Cucumber e Protractor</h2>
+					<blockquote>Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.</blockquote>
+					<p><a href="http://chaijs.com/">http://chaijs.com/</a></p>
+				</section>
+
+				<section>
+					<h2 class="slide-header">Padrão de escrita dos "requisitos" com Cucumber</h2>
+					<div style="text-align: left; margin-left: 6em; position: relative;">
+						<p><strong>Dado</strong> que eu esteja em determinada página</p>
+						<p><strong>Quando</strong> eu preencher determinado campo</p>
+						<p><strong>E</strong> clicar no botão X</p>
+						<p><strong>Então</strong> eu deveria ver uma mensagem de sucesso</p>
+						<p><strong>E</strong> estar na página de listagem</p>
+						<div class="fragment" style="position:absolute;top:0;left:-5em;color:#990e0c;font-weight:bold;">
+							INPUT &#8594; 
+						</div>
+						<div class="fragment" style="position:absolute;top:3em;left:-6em;color:#990e0c;font-weight:bold;">
+							PROCESS. &#8594; 
+						</div>
+						<div class="fragment" style="position:absolute;top:7em;left:-6em;color:#990e0c;font-weight:bold;">
+							OUTPUT &#8594; 
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="slide-header">Exemplo de uso do Cucumber, Protractor e Chai</h2>
 					<h3 class="subtitle">.feature</h3>
 					<pre style="font-size:0.6em;"><code>Feature: DPS em Configuração de Produto
   Como um usuário
@@ -180,7 +210,7 @@
 				</section>
 
 				<section>
-					<h2 class="slide-header">Exemplo de uso do Cucumber e Protractor</h2>
+					<h2 class="slide-header">Exemplo de uso do Cucumber, Protractor e Chai</h2>
 					<h3 class="subtitle">.steps.js</h3>
 					<pre style="font-size:0.6em;"><code>this.Given(/^eu estou na página de Cadastro de DPS$/, function () {
   browser.setLocation('/produtos/8105/configuracoes/1/dps/insercao');
@@ -209,6 +239,10 @@ this.Then(/^eu deveria voltar para a tela de listagem de DPSs$/, function () {
 					<p>
 						<code>gulp cucumber --file=prod-config-dps</code>
 					</p>
+				</section>
+
+				<section>
+					<h2 class="slide-header">Mãos à massa! Testando um caso real...</h2>
 				</section>
 
 				<section>
